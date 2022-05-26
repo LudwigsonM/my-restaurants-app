@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ActivityIndicator, ImageBackground, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, ImageBackground, ScrollView, Image, Button } from 'react-native';
 import { useEffect, useState, } from 'react';
+import styles from './src/styles';
 
-const image = { uri: 'https://c8.alamy.com/comp/M9DH04/waiter-wearing-the-uniform-holding-a-dish-of-chicken-cartoon-character-set-of-fun-flat-cartoon-person-M9DH04.jpg' }
+const backGrImage = { uri: 'https://c8.alamy.com/comp/M9DH04/waiter-wearing-the-uniform-holding-a-dish-of-chicken-cartoon-character-set-of-fun-flat-cartoon-person-M9DH04.jpg' }
 
 export default function App() {
   const [allRestaurants, setAllRestaurants] = useState();
@@ -23,7 +24,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <ImageBackground resizeMode='cover' source={image} style={styles.container}>
+      <ImageBackground resizeMode='cover' source={backGrImage} style={styles.container}>
         <ScrollView>
           {allRestaurants ? (
             allRestaurants?.map(singleRest => (
@@ -41,17 +42,3 @@ export default function App() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  restaurantsName: {
-    color: 'teal',
-    fontSize: 65,
-    marginVertical: 150
-  },
-});
