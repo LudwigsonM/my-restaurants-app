@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { ActivityIndicator, ScrollView, View, TouchableOpacity } from 'react-native';
+import { SingleRestContext } from '../../App';
 import RestaurantCard from '../components/RestaurantCard';
 import styles from '../styles';
 
 export default function Home({ navigation }) {
     const [ allRestaurants, setAllRestaurants] = useState();
+    const { setCurrentRest } = useContext(SingleRestContext)
 
     useEffect(() => {
         fetch('https://my-first-firestore-lm.web.app/restaurants')
@@ -13,6 +15,11 @@ export default function Home({ navigation }) {
             .catch(console.error)
     },[])
     
+    const handlePress = (singleRest) => {
+        setCurrentRest(singleRest);
+        navigation.navigate('Details');
+    }
+
     return (
 <View style={styles.container}>
         <ScrollView>
@@ -20,7 +27,7 @@ export default function Home({ navigation }) {
         ? <ActivityIndicator size='large' color='red' />
         : allRestaurants.map(singleRest => (
             <TouchableOpacity key={singleRest.id} 
-            onPress={() => navigation.navigate('Details')}>
+            onPress={() => handlePress(singleRest)}>
             <RestaurantCard singleRest={singleRest} />
             </TouchableOpacity>
             ))
