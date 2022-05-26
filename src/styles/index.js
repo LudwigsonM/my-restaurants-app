@@ -4,28 +4,30 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#0000',
         alignItems: 'center',
         justifyContent: 'center',
         marginHorizontal: 0,
+        
     },
     restaurantCard: {
         width: '100%',
-        marginVertical: 16,
+        paddingTop: 10,
+        marginVertical: 25,
         backgroundColor: 'orange',
-        color: 'grey',
+        color: 'purple',
         borderRadius: 6,
     },
     restaurantsName: {
         color: 'teal',
-        fontSize: 65,
-        fontWeight: 600,
+        fontSize: 35,
+        fontWeight: '200',
         marginTop: 150
     },
     cusine: {
         fontSize: 16,
         fontWeight: '100',
-        color: '#ff333',
+        color: '#788788',
     },
     address: {
         fontSize: 14,
