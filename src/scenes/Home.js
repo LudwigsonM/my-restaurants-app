@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, ScrollView } from 'react-native';
+import { ActivityIndicator, ScrollView, View, TouchableOpacity } from 'react-native';
 import RestaurantCard from '../components/RestaurantCard';
+import styles from '../styles';
 
-export default function Home() {
+export default function Home({ navigation }) {
     const [ allRestaurants, setAllRestaurants] = useState();
 
     useEffect(() => {
@@ -13,14 +14,18 @@ export default function Home() {
     },[])
     
     return (
+<View style={styles.container}>
         <ScrollView>
         {!allRestaurants
-        ?<ActivityIndicator size='large' color='red' />
-        : 
-        allRestaurants.map(singleRest => (
-            <RestaurantCard key={singleRest.id} singleRest={singleRest} />
+        ? <ActivityIndicator size='large' color='red' />
+        : allRestaurants.map(singleRest => (
+            <TouchableOpacity key={singleRest.id} 
+            onPress={() => navigation.navigate('Details')}>
+            <RestaurantCard singleRest={singleRest} />
+            </TouchableOpacity>
             ))
-    }
+        }
     </ScrollView>
+</View>
 )
 }

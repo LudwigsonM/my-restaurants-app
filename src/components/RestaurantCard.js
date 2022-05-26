@@ -7,13 +7,13 @@ export default function RestaurantCard ({ singleRest }) {
             <Text style={styles.restaurantsName}>
                 {singleRest.name}
             </Text>
-            <Text style={styles.cusine}>
-            { singleRest.cusine}
+            <Text style={styles.cuisine}>
+            { singleRest.cuisine}
             </Text>
             <Text style={styles.address}>
                 {singleRest.address}
             </Text>
-            <Image source={{ uri: singleRest.image }} style={{width: '100%', height: 250}} />
+            <Image source={{ uri: singleRest.image }} style={{width: '100%', minWidth: 370, height: 250}} />
         </View>
     )
 }
