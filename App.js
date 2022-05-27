@@ -5,14 +5,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './src/scenes/Home';
 import Details from './src/scenes/Details';
 
-const Stack = createNativeStackNavigator()
-export const SingleRestContext = createContext(null);
+const Stack = createNativeStackNavigator();
+
+export const SingleRestContext = createContext(null); // use null as default for context
 
 export default function App() {
   const[currentRest, setCurrentRest] = useState();
+
   return (
     <SingleRestContext.Provider value={{ currentRest, setCurrentRest }}>
-
   <NavigationContainer>
           <Stack.Navigator initialRouteName='Home'>
             <Stack.Screen name='Home' component={Home} options={{ title: 'Limited Restaurants !' }} />
